@@ -1,12 +1,17 @@
 <template>
 <div>
-  <hi>1111111</hi>
+  <h1>1111111</h1>
 
 </div>
 
 </template>
 
 <script>
+export default {
+  name: 'Layout',
+
+}
+
 </script>
 
 <style scoped>
