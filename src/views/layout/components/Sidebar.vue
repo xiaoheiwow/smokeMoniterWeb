@@ -8,8 +8,8 @@
       <el-menu-item index="/home"><i class="el-icon-s-platform"></i>首页</el-menu-item>
       <el-submenu index="2">
         <template slot="title"><i class="el-icon-menu"></i><span>医院管理</span></template>
-        <el-menu-item index="/verifyManager/audit">医院列表</el-menu-item>
-        <el-menu-item index="/verifyManager/apply">点位管理</el-menu-item>
+        <el-menu-item index="/hospital">医院列表</el-menu-item>
+        <el-menu-item index="/building">点位管理</el-menu-item>
       </el-submenu>
       <el-submenu index="3">
         <template slot="title"><i class="el-icon-user-solid"></i><span>设备管理</span></template>

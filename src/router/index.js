@@ -11,12 +11,38 @@ export default new Router({
       path: '',
       component: Layout,
       redirect: '/home',
-      children: [{
+      children: [
+      {
         path: 'home',
         name: 'home',
         component: () => import('@/views/home/index')
-        // meta: {title: '首页', icon: 'home'}
-      }]
+      },
+      {
+        path: '/hospital',
+        name: 'hospital',
+        component: () => import('@/views/hospitalManager/hospital')
+      },
+      {
+        path: '/hospital/detail',
+        name: 'detail',
+        component: () => import('@/views/hospitalManager/components/detail')
+      },
+      {
+        path: '/hospital/update',
+        name: 'update',
+        component: () => import('@/views/hospitalManager/components/update')
+      },
+      {
+        path: '/hospital/add',
+        name: 'add',
+        component: () => import('@/views/hospitalManager/components/add')
+      },
+      {
+        path: '/building',
+        name: 'building',
+        component: () => import('@/views/hospitalManager/building')
+      }
+    ]
     }
   ]
 })
