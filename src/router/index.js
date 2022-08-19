@@ -43,6 +43,45 @@ export default new Router({
         component: () => import('@/views/hospitalManager/building')
       }
     ]
+    },
+    {
+      path: '',
+      component: Layout,
+      redirect: '/home',
+      children: [
+      {
+        path: '/camera',
+        name: 'camera',
+        component: () => import('@/views/equipManager/camera')
+      }, 
+      {
+        path: '/offline',
+        name: 'offline',
+        component: () => import('@/views/equipManager/offline')
+      }, 
+      {
+        path: '/camera/updateEquip',
+        name: 'updateEquip',
+        component: () => import('@/views/equipManager/components/updateEquip')
+      }, 
+      {
+        path: '/camera/addEquip',
+        name: 'addEquip',
+        component: () => import('@/views/equipManager/components/addEquip')
+      },
+    ]
+    },
+    {
+      path: '',
+      component: Layout,
+      redirect: '/home',
+      children: [
+      {
+        path: '/department',
+        name: 'department',
+        component: () => import('@/views/systemManager/department')
+      }
+    ]
     }
   ]
 })

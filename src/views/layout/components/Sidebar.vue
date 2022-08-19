@@ -12,21 +12,21 @@
         <el-menu-item index="/building">点位管理</el-menu-item>
       </el-submenu>
       <el-submenu index="3">
-        <template slot="title"><i class="el-icon-user-solid"></i><span>设备管理</span></template>
-        <el-menu-item index="/userManager/user">摄像机管理</el-menu-item>
-        <el-menu-item index="/userManager/role">离线设备列表</el-menu-item>
+        <template slot="title"><i class="el-icon-s-order"></i><span>设备管理</span></template>
+        <el-menu-item index="/camera">摄像机管理</el-menu-item>
+        <el-menu-item index="/offline">离线设备列表</el-menu-item>
       </el-submenu>
       <el-submenu index="4">
-        <template slot="title"><i class="el-icon-user-solid"></i><span>报警工单处理</span></template>
-        <el-menu-item index="/userManager/user">工单推送</el-menu-item>
-        <el-menu-item index="/userManager/role">工单处理</el-menu-item>
+        <template slot="title"><i class="el-icon-warning"></i><span>报警工单处理</span></template>
+        <el-menu-item index="/home">工单推送</el-menu-item>
+        <el-menu-item index="/home">工单处理</el-menu-item>
       </el-submenu>
-      <el-menu-item index="/home"><i class="el-icon-s-platform"></i>报警信息统计</el-menu-item>
+      <el-menu-item index="/home"><i class="el-icon-s-data"></i>报警信息统计</el-menu-item>
       <el-submenu index="5">
         <template slot="title"><i class="el-icon-user-solid"></i><span>系统管理</span></template>
-        <el-menu-item index="/userManager/user">医务人员管理</el-menu-item>
-        <el-menu-item index="/userManager/user">部门管理</el-menu-item>
-        <el-menu-item index="/userManager/role">巡查人员管理</el-menu-item>
+        <el-menu-item index="/home">医务人员管理</el-menu-item>
+        <el-menu-item index="/department">部门管理</el-menu-item>
+        <el-menu-item index="/home">巡查人员管理</el-menu-item>
         <el-menu-item index="/">用户管理</el-menu-item>
         <el-menu-item index="/">角色管理</el-menu-item>
       </el-submenu>
