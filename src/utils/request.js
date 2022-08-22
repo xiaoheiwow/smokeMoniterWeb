@@ -17,7 +17,7 @@ service.interceptors.request.use(config => {
   // }
 
   // 测试用token   后台获取
-  config.headers['Authorization'] = 'Bearer ' + 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsidGVzdCJdLCJ1c2VyX25hbWUiOiIxOTk5MTF8fHlhdG9yb3x8MSIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSJdLCJleHAiOjE2NjA5MjkyMTAsImF1dGhvcml0aWVzIjpbImlmIG5lZWQgLGkgY2FuIGRvIGl0Il0sImp0aSI6ImJiMTllOGE0LTMyYzQtNDQ5YS1hZWRkLTk3ZmMwZTVlMTNmNyIsImNsaWVudF9pZCI6IndlYi1jbGllbnQifQ.hi83yQJZn7Xr7cDtXZiYzR3WVCb0DUx61x4FKOQ9OBY'
+  config.headers['Authorization'] = 'Bearer ' + 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsidGVzdCJdLCJ1c2VyX25hbWUiOiIxOTk5MTF8fHlhdG9yb3x8MSIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSJdLCJleHAiOjE2NjEyNzQ3MzksImF1dGhvcml0aWVzIjpbImlmIG5lZWQgLGkgY2FuIGRvIGl0Il0sImp0aSI6IjQ1YWYxZjAyLTM3YTEtNDVjNC04NTU5LTgwMmVhYmVhODIwZSIsImNsaWVudF9pZCI6IndlYi1jbGllbnQifQ.s6SPJBF3m7FjDo-oXNUq6qbUU8NVMf-E4kMWZr-4W7g'
   return config
 }, error => {
   // Do something with request error

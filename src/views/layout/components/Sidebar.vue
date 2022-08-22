@@ -24,11 +24,11 @@
       <el-menu-item index="/home"><i class="el-icon-s-data"></i>报警信息统计</el-menu-item>
       <el-submenu index="5">
         <template slot="title"><i class="el-icon-user-solid"></i><span>系统管理</span></template>
-        <el-menu-item index="/home">医务人员管理</el-menu-item>
+        <el-menu-item index="/hospitalStaff">医务人员管理</el-menu-item>
         <el-menu-item index="/department">部门管理</el-menu-item>
-        <el-menu-item index="/home">巡查人员管理</el-menu-item>
-        <el-menu-item index="/">用户管理</el-menu-item>
-        <el-menu-item index="/">角色管理</el-menu-item>
+        <el-menu-item index="/inspector">巡查人员管理</el-menu-item>
+        <el-menu-item index="/user">用户管理</el-menu-item>
+        <el-menu-item index="/role">角色管理</el-menu-item>
       </el-submenu>
     </el-menu>
   </div>

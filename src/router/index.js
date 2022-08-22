@@ -80,7 +80,37 @@ export default new Router({
         path: '/department',
         name: 'department',
         component: () => import('@/views/systemManager/department')
-      }
+      },
+      {
+        path: '/role',
+        name: 'role',
+        component: () => import('@/views/systemManager/role')
+      },
+      {
+        path: '/user',
+        name: 'user',
+        component: () => import('@/views/systemManager/user')
+      },
+      {
+        path: '/user/updateUser',
+        name: 'updateUser',
+        component: () => import('@/views/systemManager/components/updateUser')
+      },
+      {
+        path: '/inspector',
+        name: 'inspector',
+        component: () => import('@/views/systemManager/inspector')
+      },
+      {
+        path: '/inspector/updateInspector',
+        name: 'updateInspector',
+        component: () => import('@/views/systemManager/components/updateInspector')
+      },
+      {
+        path: '/hospitalStaff',
+        name: 'hospitalStaff',
+        component: () => import('@/views/systemManager/hospitalStaff')
+      },
     ]
     }
   ]

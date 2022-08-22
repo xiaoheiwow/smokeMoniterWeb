@@ -37,3 +37,10 @@ export function updateDepartment (data) {
       data:data
     })
   }
+  
+  export function fetchDeptName (id) {
+    return request({
+      url: '/department/fetchDeptName/'+id,
+      method: 'get',
+    })
+  }
