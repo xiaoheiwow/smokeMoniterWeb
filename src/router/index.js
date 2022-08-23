@@ -111,7 +111,24 @@ export default new Router({
         name: 'hospitalStaff',
         component: () => import('@/views/systemManager/hospitalStaff')
       },
+      {
+        path: '/hospitalStaff/updateStaff',
+        name: 'updateStaff',
+        component: () => import('@/views/systemManager/components/updateStaff')
+      },
     ]
-    }
+    },
+    {
+      path: '',
+      component: Layout,
+      redirect: '/home',
+      children: [
+      {
+        path: '/orderPush',
+        name: 'orderPush',
+        component: () => import('@/views/orderHandler/orderPush')
+      }
+    ]
+    },
   ]
 })

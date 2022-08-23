@@ -37,3 +37,11 @@ export function updateOffice (data) {
       data:data
     })
   }
+
+    
+  export function fetchOfficeName (id) {
+    return request({
+      url: '/office/fetchOfficeName/'+id,
+      method: 'get',
+    })
+  }

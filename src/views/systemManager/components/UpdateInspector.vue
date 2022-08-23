@@ -142,6 +142,9 @@ export default {
               path: "/user/updateUser",
               params: { isEdit: false, userDetail: detail }
             });
+            this.$alert("请完善用户信息", "提示", {
+              confirmButtonText: "确定",
+            });
           });
         }
       });
