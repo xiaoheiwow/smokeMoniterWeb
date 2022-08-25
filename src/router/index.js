@@ -109,7 +109,7 @@ export default new Router({
       {
         path: '/hospitalStaff',
         name: 'hospitalStaff',
-        component: () => import('@/views/systemManager/hospitalStaff')
+        component: () => import('@/views/systemManager/hospitalStaff.vue')
       },
       {
         path: '/hospitalStaff/updateStaff',
@@ -127,7 +127,28 @@ export default new Router({
         path: '/orderPush',
         name: 'orderPush',
         component: () => import('@/views/orderHandler/orderPush')
-      }
+      },
+      {
+        path: '/orderHandler',
+        name: 'orderHandler',
+        component: () => import('@/views/orderHandler/orderHandler.vue')
+      },
+      {
+        path: '/orderHandler/updateOrderHandler',
+        name: 'updateOrderHandler',
+        component: () => import('@/views/orderHandler/components/updateOrderHandler')
+      },
+      {
+        path: '/orderHandler/orderDetail',
+        name: 'orderDetail',
+        component: () => import('@/views/orderHandler/components/orderDetail')
+      },
+      {
+        path: '/message',
+        name: 'message',
+        component: () => import('@/components/message')
+      },
+
     ]
     },
   ]

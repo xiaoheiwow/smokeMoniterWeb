@@ -11,17 +11,17 @@ const service = axios.create({
 
 // request拦截器
 service.interceptors.request.use(config => {
-  // // 让每个请求携带自定义token
-  // if (store.getters.token) {
-  //   config.headers['Authorization'] = getToken()
-  // }
+  
+  //设置请求表头
+  if (store.getters.token) {
+    config.headers['Authorization'] = getToken()
+  }
 
-  // 测试用token   后台获取
-  config.headers['Authorization'] = 'Bearer ' + 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsidGVzdCJdLCJ1c2VyX25hbWUiOiIxOTk5MTF8fHlhdG9yb3x8MSIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSJdLCJleHAiOjE2NjEyNzQ3MzksImF1dGhvcml0aWVzIjpbImlmIG5lZWQgLGkgY2FuIGRvIGl0Il0sImp0aSI6IjQ1YWYxZjAyLTM3YTEtNDVjNC04NTU5LTgwMmVhYmVhODIwZSIsImNsaWVudF9pZCI6IndlYi1jbGllbnQifQ.s6SPJBF3m7FjDo-oXNUq6qbUU8NVMf-E4kMWZr-4W7g'
+  //config.headers['Authorization'] = 'Bearer ' + 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsidGVzdCJdLCJ1c2VyX25hbWUiOiJ6c21qfHx6c21qfHw0Iiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl0sImV4cCI6MTY2MTU2OTUzOSwiYXV0aG9yaXRpZXMiOlsiaWYgbmVlZCAsaSBjYW4gZG8gaXQiXSwianRpIjoiNDc4YTM2ZGQtOTA4OC00ZGJkLWI1NDEtMDE3YThjY2ZlZjIyIiwiY2xpZW50X2lkIjoid2ViLWNsaWVudCJ9.rknTUyHieLNwhfgqBI0GZWagSgCnVKZRxs_aIetW-sE';
+
   return config
 }, error => {
-  // Do something with request error
-  console.log(error) // for debug
+  console.log(error)
   Promise.reject(error)
 })
 
@@ -29,7 +29,7 @@ service.interceptors.request.use(config => {
 service.interceptors.response.use(
   response => {
   /**
-  * code 抛错 可结合自己业务进行修改
+  * code 抛错 
   */
     const res = response.data
     if (res.resultCode === 404) {
@@ -47,7 +47,8 @@ service.interceptors.response.use(
           type: 'warning'
         }).then(() => {
           store.dispatch('FedLogOut').then(() => {
-            location.reload()// 为了重新实例化vue-router对象 避免bug
+       // 为了重新实例化vue-router对象 避免bug
+            location.reload()
           })
         })
       }
@@ -57,7 +58,7 @@ service.interceptors.response.use(
     }
   },
   error => {
-    console.log('err' + error)// for debug
+    console.log('err' + error)
     Message({
       message: error.message,
       type: 'error',

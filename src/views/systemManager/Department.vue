@@ -355,6 +355,7 @@ export default {
       this.deptName = "";
     },
     handleOfiiceUpdate() {
+      //更新
       if (this.isEdit) {
         let update = {};
         update.hospitalId = this.hospitalId;
@@ -369,6 +370,7 @@ export default {
           });
         });
       } else {
+        //添加
         if (this.hospitalId === "" || null === this.hospitalId) {
           this.$message({
             message: "请选择医院",

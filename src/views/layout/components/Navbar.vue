@@ -9,6 +9,7 @@
           circle
           size="small"
           style="margin-right:-10px"
+          @click="goMessage()"
         ></el-button>
         <el-button
           style="margin-right:10px"
@@ -24,7 +25,7 @@
             <el-avatar :size="40" :src="avatar" :class="['avatar-info']" style="margin-right:5px;margin-bottom:-15px">
             </el-avatar>
             <span>
-              druid
+              {{this.$store.state.user.name}}
             </span>
           </div>
           <el-dropdown-menu
@@ -51,6 +52,18 @@ export default {
       avatar:
         "https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png"
     };
+  },
+  created(){
+  },
+  computed:{
+  },
+  methods:{
+    goMessage(){
+      this.$router.push({
+        name:"message",
+        path:"/message"
+        })
+    }
   }
 };
 </script>

@@ -14,6 +14,12 @@ export function updateStatusById (id) {
   })
 }
 
+export function fetchUser (id) {
+  return request({
+    url: '/user/fetchUser/'+id,
+    method: 'get',
+  })
+}
 export function deleteById (id) {
   return request({
     url: '/user/deleteById/'+id,

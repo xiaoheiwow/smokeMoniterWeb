@@ -18,10 +18,3 @@ export function logout (data) {
   })
 }
 
-export function getInfo (data) {
-  return request({
-    url: '/user/getInfo',
-    method: 'post',
-    data: data
-  })
-}

@@ -79,9 +79,7 @@
         tooltip-effect="dark"
         style="width: 100%"
         v-loading="listLoading"
-        @selection-change="handleSelectionChange"
       >
-        <el-table-column type="selection"> </el-table-column>
         <el-table-column label="序号">
           <template slot-scope="scope">{{ scope.row.id }}</template>
         </el-table-column>
@@ -90,9 +88,6 @@
         </el-table-column>
         <el-table-column label="报警时间" show-overflow-tooltip>
           <template slot-scope="scope">{{ scope.row.createTime }}</template>
-        </el-table-column>
-        <el-table-column label="负责人">
-          <template slot-scope="scope">{{ scope.row.handlerName }}</template>
         </el-table-column>
         <el-table-column label="地址" show-overflow-tooltip>
           <template slot-scope="scope">{{ scope.row.address }}</template>
@@ -124,8 +119,11 @@
         <el-table-column label="优先级">
           <template slot-scope="scope">{{ scope.row.priority }}</template>
         </el-table-column>
-        <el-table-column label="推送人">
-          <template slot-scope="scope">{{ scope.row.pusherName }}</template>
+        <el-table-column label="处理进度">
+          <template slot-scope="scope">{{ scope.row.orderProgress }}</template>
+        </el-table-column>
+        <el-table-column label="负责人">
+          <template slot-scope="scope">{{ scope.row.handlerName }}</template>
         </el-table-column>
         <el-table-column fixed="right" label="操作" width="200">
           <template slot-scope="scope">
@@ -133,68 +131,18 @@
               type="text"
               size="medium"
               @click="
-                goDetail(scope.row);
+                goDetail(scope.row)
               "
-              >详情</el-button
+              >查看</el-button
             >
             <span>/</span>
             <el-button
               type="text"
               size="medium"
-              @click="handleUser(scope.row)"
-              >分配</el-button
+              @click="goUpdate(scope.row)"
+              >编辑</el-button
             >
 
-              <!-- 分配对话框 -->
-          <el-dialog style="float:left" :visible.sync="dialogFormVisible" append-to-body width="550px" :dialog-data="dialogData">
-            <template slot="title">
-              <div style="float:left;font-weight:bold">
-                分配
-              </div>
-            </template>
-            <el-form style="padding-top:50px" >
-              <el-form-item label="推送人:">
-                <el-input :disabled='true' v-model="dialogData.pusherName" style="width:60%"></el-input>
-              </el-form-item>
-              <el-form-item label="负责人:">
-              <el-select
-                v-model="handlerName"
-                placeholder="请选择"
-                style="width:60%"
-              >
-                <el-option
-                  v-for="item in users"
-                  :key="item.id"
-                  :value="item.realName"
-                  :label="item.realName"
-                >
-                </el-option>
-              </el-select>
-              </el-form-item>
-            </el-form>
-            <div slot="footer" class="dialog-footer">
-              <el-button @click="dialogFormVisible = false">取 消</el-button>
-              <el-button
-                type="primary"
-                @click="
-                  HandlerChecked();
-                  dialogFormVisible = false;
-                "
-                >确 定</el-button
-              >
-            </div>
-          </el-dialog>
-
-            <span>/</span>
-            <el-button
-              style="color:red"
-              type="text"
-              size="medium"
-              @click="
-                handleDeleteById(scope.row)
-              "
-              >删除</el-button
-            >
           </template>
         </el-table-column>
       </el-table>
@@ -215,11 +163,10 @@
 </template>
 
 <script>
-import { fetchList,deleteById,deleteByIds,updateHandler} from "@/api/order";
+import { fetchHandedList} from "@/api/order";
 import { fetchName} from "@/api/hospital";
-import { fetchUser} from "@/api/user";
 export default {
-  name: "orderPush",
+  name: "orderHandler",
   data() {
     return {
       hospitalId:'',
@@ -258,7 +205,7 @@ export default {
       }
     };
   },
-  created() {
+     created() {
       this.getList();
       fetchName().then(response => {
         response.data.forEach(element => {
@@ -269,7 +216,7 @@ export default {
   methods: {
     getList() {
       this.listLoading = true;
-      fetchList(this.queryParams).then(response => {
+      fetchHandedList(this.queryParams).then(response => {
         this.listLoading = false;
         this.list = response.data.currentPageDatas;
         this.total = response.data.totalDataCount;
@@ -283,9 +230,6 @@ export default {
       this.queryParams.data.orderNumber = this.orderNumber;
       this.getList()
     },
-    handleSelectionChange(val) {
-      this.multipleSelection = val;
-    },
     handleSizeChange(val) {
       this.queryParams.currentPage = 1;
       this.queryParams.pageSize = val;
@@ -295,66 +239,11 @@ export default {
       this.queryParams.currentPage = val;
       this.getList();
     },   
-    handleDeleteById(row) {
-      this.$confirm("是否要删除所选项", "提示", {
-        confirmButtonText: "确定",
-        cancelButtonText: "取消",
-        type: "warning"
-      }).then(() => {
-        deleteById(row.id).then(response => {
-          this.$message({
-            message: "删除成功",
-            type: "success",
-            duration: 1000
-          });
-          this.getList();
-        });
-      });
-    },
-    handleUser(row){
-      this.dialogData=row;
-      this.handlerName = row.handlerName;
-      this.dialogFormVisible = true;
-      fetchUser(row.hospitalId).then(response =>{
-        this.users = response.data;
-      }) 
-    },
-    HandlerChecked(){
-      let param = {};
-      param.id = this.dialogData.id;
-      param.handlerName = this.handlerName;
-      this.users.forEach(element => {
-         if(element.realName===param.handlerName){
-           param.userId =element.id;
-         }
-      });
-      updateHandler(param).then(response =>{
-         this.$message({
-            message: "分配成功",
-            type: "success",
-            duration: 1000
-          });
-         this.getList();
-      })
-    },
-    handleBatchDelete() {
-      let ids = [];
-      this.$confirm("是否要删除所选项", "提示", {
-        confirmButtonText: "确定",
-        cancelButtonText: "取消",
-        type: "warning"
-      }).then(() => {
-        for (let item of this.multipleSelection) {
-          ids.push(item.id);
-        }
-        deleteByIds(ids).then(response => {
-          this.$message({
-            message: "删除成功",
-            type: "success",
-            duration: 1000
-          });
-          this.getList();
-        });
+    goUpdate(row) {
+      this.$router.push({
+        name: "updateOrderHandler",
+        path: "/orderHandler/updateOrderHandler",
+        params: {orderDetail: row }
       });
     },
     goDetail(row){
@@ -364,6 +253,7 @@ export default {
         params: {orderDetail: row }
       });
     }
+
   }
 };
 </script>
