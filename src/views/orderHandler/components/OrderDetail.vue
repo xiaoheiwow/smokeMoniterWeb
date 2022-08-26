@@ -2,6 +2,13 @@
   <div>
     <el-card style="margin-top:20px">
       <span style="float:left;margin-top:-10px;font-weight:bold">工单详情</span>
+      <el-button   
+        style="float:right;color:black;margin-top:-15px"
+        type="text"
+        size="medium"
+        @click="back()">
+        返回
+      </el-button>
     </el-card>
     <div style="width:100%">
       <div style="width:49%;float:left;">
@@ -196,7 +203,15 @@ export default {
     clear() {
       clearInterval(this.nowTimes);
       this.nowTimes = null;
-    }
+    },
+    back() {
+      if (window.history.length <= 1) {
+        this.$router.push({ path: "/" });
+        return false;
+      } else {
+        this.$router.go(-1);
+      }
+    },
   }
 };
 </script>

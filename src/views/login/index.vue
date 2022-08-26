@@ -1,15 +1,11 @@
 <template>
-  <div>
-    <img :src="login_center_bg" fit class="login-center-layout">
+  <div style="width:100%;height:100%;margin:0px;padding:0px">
     <el-card class="login-form-layout">
       <el-form autoComplete="on"
                :model="loginForm"
                :rules="loginRules"
                ref="loginForm"
                label-position="left">
-        <div style="text-align: center">
-          <i class="el-icon-delete"></i>
-        </div>
         <h2 class="login-title color-main">南京市爱国卫生健康平台</h2>
         <el-form-item prop="username">
           <el-input name="username"
@@ -18,7 +14,7 @@
                     autoComplete="on"
                     placeholder="请输入用户名">
           <span slot="prefix">
-            <i class="el-icon-delete"></i>
+            <i class="el-icon-user-solid"></i>
           </span>
           </el-input>
         </el-form-item>
@@ -30,10 +26,10 @@
                     autoComplete="on"
                     placeholder="请输入密码">
           <span slot="prefix">
-            <i class="el-icon-delete"></i>
+            <i class="el-icon-unlock"></i>
           </span>
             <span slot="suffix" @click="showPwd">
-            <i class="el-icon-delete"></i>
+            <i style="cursor: pointer;" class="el-icon-view"></i>
           </span>
           </el-input>
         </el-form-item>
@@ -47,13 +43,14 @@
         </el-form-item>
       </el-form>
     </el-card>
+    <img :src="login_center_bg" class="login-background">
   </div>
 </template>
 
 <script>
 import {isvalidUsername} from '@/utils/validate';
-import {setSupport,getSupport,setCookie,getCookie} from '@/utils/support';
-import login_center_bg from '@/assets/bg.jpeg'
+import {setSupport,setCookie,getCookie} from '@/utils/support';
+import login_center_bg from '@/assets/bg2.jpeg'
   export default {
     name: 'login',
     data() {
@@ -145,17 +142,16 @@ import login_center_bg from '@/assets/bg.jpeg'
     right: 0;
     width: 360px;
     margin: 140px auto;
-    border-top: 10px solid #409EFF;
+    border-top: 10px solid #ffffff;
   }
   .login-title {
     text-align: center;
   }
-  .login-center-layout {
-    background: #409EFF;
-    width: auto;
-    height: auto;
-    max-width: 100%;
-    max-height: 100%;
-    margin-top: 200px;
+  .login-background {
+    background: #ffffff;
+    width: 100%;
+    height: 100vh;
+    padding:0;
+    margin-bottom:-5px;
   }
 </style>

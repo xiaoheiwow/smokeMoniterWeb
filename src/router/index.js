@@ -148,6 +148,11 @@ export default new Router({
         name: 'message',
         component: () => import('@/components/message')
       },
+      {
+        path: '/timeCount',
+        name: 'timeCount',
+        component: () => import('@/views/infoCount/timeCount')
+      },
 
     ]
     },

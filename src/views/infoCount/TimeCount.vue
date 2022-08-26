@@ -1,7 +1,7 @@
 <template>
   <div>
     <el-card class="form-container" shadow="never">
-      <span style="float:left;margin-top:-10px;font-weight:bold">通知中心</span>
+      <span style="float:left;margin-top:-10px;font-weight:bold">报警时间统计</span>
       <el-button   
         style="float:right;color:black;margin-top:-15px"
         type="text"
@@ -10,39 +10,17 @@
         返回
       </el-button>
     </el-card>
-    <el-card style="height:780px">
+    <el-card style="height:270px">
       <div style="width:100%">
-        <span style="float:left;font-weight:bold">最近收到的通知</span>
-        <br />
-        <span style="float:left;padding-top:20px">通知中心</span>
+
       </div>
-      <br />
-      <div
-        style="width:20%;padding-top:30px"
-        v-for="(item, key, i) of list"
-        :key="i"
-      >
-        <el-card class="box-card">
-          <div style="width:100%">
-            <div style="width:30%;font-size:30px;float:left">
-              <i class="el-icon-bell" style="float:left"> </i>
-            </div>
-            <div style="width:100%">
-              <span style="float:left;margin-top:-10px"
-                >{{ item.pusherName }} 提交警报 {{ item.createTime }}</span
-              >
-              <span style="float:left;margin-top:10px;color:#ff0000">{{ item.alarmType }}</span>
-             <el-button
-              style="float:right"
-              type="text"
-              size="medium"
-              @click="goDetail(item)"
-              >查看</el-button
-            >
-            </div>
-          </div>
-        </el-card>
+    </el-card>
+    <el-card style="height:500px">
+      <div>
+        <span style="float:left;font-weight:bold">实时数据统计</span>
+
       </div>
+
     </el-card>
   </div>
 </template>
@@ -51,7 +29,7 @@
 import { fetchRecord ,queryOrderById} from "@/api/order";
 export default {
   list: [],
-  name: "message",
+  name: "timeCount",
   data() {
     return {
       list: []
