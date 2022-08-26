@@ -10,6 +10,9 @@ import 'xe-utils'
 import VXETable from 'vxe-table'
 import 'vxe-table/lib/style.css'
 
+import * as echarts from 'echarts';
+Vue.prototype.$echarts = echarts
+
 Vue.use(VXETable)
 Vue.use(ElementUI)
 Vue.config.productionTip = false

@@ -1,5 +1,9 @@
 <template>
   <div class="app-container">
+  <el-breadcrumb style="padding-bottom:10px">
+  <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
+  <el-breadcrumb-item>医院列表</el-breadcrumb-item>
+</el-breadcrumb>
     <el-card class="filter-container" shadow="never">
       <div style="margin-top: 15px">
         <el-form

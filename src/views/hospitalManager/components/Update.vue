@@ -1,4 +1,10 @@
 <template>
+<div>
+<el-breadcrumb style="margin-bottom:20px">
+  <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
+  <el-breadcrumb-item :to="{ path: '/hospital' }">医院列表</el-breadcrumb-item>
+  <el-breadcrumb-item>编辑</el-breadcrumb-item>
+</el-breadcrumb> 
   <el-card class="form-container" shadow="never">
     <el-form
       :inline="true"
@@ -114,6 +120,7 @@
       </div>
     </div>
   </el-card>
+</div>
 </template>
 <script>
 import VXETable from "vxe-table";

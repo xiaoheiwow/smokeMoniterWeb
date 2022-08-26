@@ -1,5 +1,11 @@
 <template>
-  <el-card class="form-container" shadow="never">
+<div>
+<el-breadcrumb  style="margin-bottom:20px">
+  <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
+  <el-breadcrumb-item :to="{ path: '/hospital' }">医院列表</el-breadcrumb-item>
+  <el-breadcrumb-item>新增</el-breadcrumb-item>
+</el-breadcrumb>
+ <el-card class="form-container" shadow="never">
     <el-form
       :inline="true"
       size="medium"
@@ -119,6 +125,7 @@
       </div>
     </div>
   </el-card>
+</div>
 </template>
 <script>
 import { fetchListByHospitalId } from "@/api/equipment";

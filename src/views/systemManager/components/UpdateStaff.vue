@@ -1,5 +1,11 @@
 <template>
-  <el-card class="form-container" shadow="never" style="height:770px">
+<div>
+  <el-breadcrumb style="margin-top:-5px">
+  <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
+  <el-breadcrumb-item :to="{ path: '/hospitalStaff' }">医务人员管理</el-breadcrumb-item>
+  <el-breadcrumb-item>编辑</el-breadcrumb-item>
+</el-breadcrumb>  
+ <el-card class="form-container" shadow="never" style="height:770px">
     <div>
       <el-form
         :inline="true"
@@ -121,6 +127,8 @@
       </div>
     </div>
   </el-card>
+</div>
+ 
 </template>
 <script>
 import { updateStaff,insertFill} from "@/api/hospitalStaff";

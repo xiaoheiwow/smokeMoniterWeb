@@ -1,5 +1,9 @@
 <template>
   <div class="app-container">
+  <el-breadcrumb style="margin-bottom:5px">
+  <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
+  <el-breadcrumb-item>离线设备</el-breadcrumb-item>
+</el-breadcrumb>
     <el-card class="filter-container" shadow="never">
       <div style="padding-bottom:30px">
         <h1 style="float:left;margin:0;font-size:20px"></h1>

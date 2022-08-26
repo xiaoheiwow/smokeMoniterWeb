@@ -1,5 +1,11 @@
 <template>
-  <el-card class="form-container" shadow="never" style="height:770px">
+<div>
+<el-breadcrumb style="margin-top:-5px">
+  <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
+  <el-breadcrumb-item :to="{ path: '/user' }">用户管理</el-breadcrumb-item>
+  <el-breadcrumb-item>编辑</el-breadcrumb-item>
+</el-breadcrumb>  
+<el-card class="form-container" shadow="never" style="height:770px">
     <div>
       <el-form
         :inline="true"
@@ -112,6 +118,7 @@
       </div>
     </div>
   </el-card>
+</div>
 </template>
 <script>
 import { modifyFillById ,insertFill} from "@/api/user";

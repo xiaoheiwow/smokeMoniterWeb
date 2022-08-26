@@ -1,5 +1,9 @@
 <template>
   <div>
+<el-breadcrumb style="margin-top:-10px">
+  <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
+  <el-breadcrumb-item>部门管理</el-breadcrumb-item>
+</el-breadcrumb>
     <div class="divCard">
       <el-card style="height: 100%;">
         <div style="float:left;width: 100%;">

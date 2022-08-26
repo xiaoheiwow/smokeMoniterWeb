@@ -1,5 +1,9 @@
 <template>
   <div class="app-container">
+  <el-breadcrumb style="margin-top:-10px">
+  <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
+  <el-breadcrumb-item>摄像机管理</el-breadcrumb-item>
+</el-breadcrumb>
     <el-card class="filter-container" shadow="never">
       <div style="padding-bottom:30px">
         <h1 style="float:left;margin:0;font-size:20px"></h1>
@@ -60,7 +64,7 @@
           :model="queryParams"
           size="medium"
           label-width="140px"
-          style="float: right;height:80px"
+          style="float: right;height:70px"
         >
           <el-button type="warning" size="medium" plain>
             <i class="el-icon-document-add"></i>导出数据
