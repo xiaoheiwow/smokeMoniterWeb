@@ -37,3 +37,19 @@ export function fetchRoleName () {
   })
 }
 
+
+export function getPermissionList () {
+  return request({
+    url: '/permission/getPermissionList',
+    method: 'post',
+  })
+}
+
+export function insertRoleAndPermission (data) {
+  return request({
+    url: '/role/insertRoleAndPermission',
+    method: 'post',
+    data:data
+  })
+}
+

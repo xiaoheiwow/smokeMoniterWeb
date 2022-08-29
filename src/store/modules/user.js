@@ -1,4 +1,4 @@
-import { login, logout } from '@/api/login'
+import { login } from '@/api/login'
 import { getToken, setToken, removeToken } from '@/utils/auth'
 
 const user = {
@@ -61,7 +61,7 @@ const user = {
     },
 
     // 前端 登出
-    FedLogOut({ commit }) {
+    SimpleLogOut({ commit }) {
       return new Promise(resolve => {
         commit('SET_TOKEN', '')
         removeToken()

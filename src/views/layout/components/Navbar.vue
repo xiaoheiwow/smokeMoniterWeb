@@ -20,12 +20,17 @@
         ></el-button>
       </span>
       <span>
-        <el-dropdown :hide-on-click="false">
+        <el-dropdown :hide-on-click="false" @command="handleCommand">
           <div class="demo-basic--circle">
-            <el-avatar :size="40" :src="avatar" :class="['avatar-info']" style="margin-right:5px;margin-bottom:-15px">
+            <el-avatar
+              :size="40"
+              :src="avatar"
+              :class="['avatar-info']"
+              style="margin-right:5px;margin-bottom:-15px"
+            >
             </el-avatar>
             <span>
-              {{this.$store.state.user.name}}
+              {{ this.$store.state.user.name }}
             </span>
           </div>
           <el-dropdown-menu
@@ -35,7 +40,7 @@
             <el-dropdown-item
               ><i class="el-icon-info"></i>个人中心</el-dropdown-item
             >
-            <el-dropdown-item
+            <el-dropdown-item command="logout"
               ><i class="el-icon-switch-button"></i>退出登录</el-dropdown-item
             >
           </el-dropdown-menu>
@@ -53,16 +58,20 @@ export default {
         "https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png"
     };
   },
-  created(){
-  },
-  computed:{
-  },
-  methods:{
-    goMessage(){
+  created() {},
+  computed: {},
+  methods: {
+    goMessage() {
       this.$router.push({
-        name:"message",
-        path:"/message"
-        })
+        name: "message",
+        path: "/message"
+      });
+    },
+    async handleCommand(command) {
+      if (command == "logout") {
+        await this.$store.dispatch('SimpleLogOut');
+        this.$router.push(`/login`);
+      }
     }
   }
 };
@@ -82,8 +91,8 @@ header {
   cursor: pointer;
 }
 .el-button--info {
-    color: #000;
-    background-color: #ffffff;
-    border-color: #ffffff;
+  color: #000;
+  background-color: #ffffff;
+  border-color: #ffffff;
 }
 </style>

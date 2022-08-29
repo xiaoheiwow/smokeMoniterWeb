@@ -11,6 +11,8 @@ import VXETable from 'vxe-table'
 import 'vxe-table/lib/style.css'
 
 import * as echarts from 'echarts';
+import dataV from '@jiaminghi/data-view'
+Vue.use(dataV)
 Vue.prototype.$echarts = echarts
 
 Vue.use(VXETable)

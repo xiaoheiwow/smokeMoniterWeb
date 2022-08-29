@@ -1,9 +1,9 @@
 <template>
   <div class="app-container">
-   <el-breadcrumb style="margin-bottom:5px">
-  <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-  <el-breadcrumb-item>角色管理</el-breadcrumb-item>
-</el-breadcrumb>   
+    <el-breadcrumb style="margin-bottom:5px">
+      <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
+      <el-breadcrumb-item>角色管理</el-breadcrumb-item>
+    </el-breadcrumb>
     <el-card class="filter-container" shadow="never">
       <div style="padding-bottom:30px">
         <h1 style="float:left;margin:0;font-size:20px">角色管理</h1>
@@ -40,13 +40,19 @@
           <el-button
             type="primary"
             size="medium"
-            @click="dialogFormVisible = true"
+            @click="
+              dialogFormVisible = true;
+              handlePermissionList();
+            "
           >
             <i class="el-icon-plus"></i>新增
           </el-button>
 
           <!-- 新增对话框 -->
-          <el-dialog style="float:left" :visible.sync="dialogFormVisible">
+          <el-dialog
+            style="float:left;width:1000px;margin-left:500px"
+            :visible.sync="dialogFormVisible"
+          >
             <template slot="title">
               <div style="float:left;font-weight:bold">
                 新增
@@ -55,16 +61,19 @@
             <el-form :model="role" style="padding-top:50px">
               <el-form-item label="角色名称">
                 <el-input
-                  v-model="role.roleName"
+                  v-model="addParam.roleName"
                   autocomplete="off"
                   aria-required="true"
                 ></el-input>
               </el-form-item>
               <el-tree
-                :data="permission"
+                style="padding-left:70px"
+                :data="permissions"
                 show-checkbox
                 node-key="id"
-                :props="defaultProps"
+                :props="roleProps"
+                ref="tree"
+                highlight-current
               >
               </el-tree>
             </el-form>
@@ -73,8 +82,8 @@
               <el-button
                 type="primary"
                 @click="
-                  HandleAddRole();
                   dialogFormVisible = false;
+                  handleAddRole();
                 "
                 >确 定</el-button
               >
@@ -209,14 +218,27 @@
 </template>
 
 <script>
-import { fetchList, deleteById, deleteByIds, modifyFillById } from "@/api/role";
+import {
+  fetchList,
+  deleteById,
+  deleteByIds,
+  modifyFillById,
+  getPermissionList,
+  insertRoleAndPermission
+} from "@/api/role";
 export default {
   name: "role",
   data() {
     return {
-      permission:{
-
+      roleProps: {
+        label: "permissionName",
+        children: "children"
       },
+      addParam: {
+        roleName: "",
+        permissions: []
+      },
+      permissions: [],
       value: "",
       role: {
         id: "",
@@ -333,6 +355,25 @@ export default {
       this.role.roleName = row.roleName;
       this.role.comments = row.comments;
       this.role.remarks = row.remarks;
+    },
+    handlePermissionList() {
+      getPermissionList().then(response => {
+        this.permissions = response.data;
+      });
+    },
+    handleAddRole() {
+      this.addParam.permissions = this.$refs.tree.getCheckedKeys();   
+      insertRoleAndPermission(this.addParam).then(response => {
+        if (response.data == 1) {
+          this.$message({
+            message: "新增成功",
+            type: "success",
+            duration: 1000
+          });
+        }
+        this.addParam.roleName='';
+        this.addParam.permissions=[];
+      });
     }
   }
 };

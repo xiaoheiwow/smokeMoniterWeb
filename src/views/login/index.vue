@@ -69,6 +69,18 @@ import login_center_bg from '@/assets/bg2.jpeg'
         }
       };
       return {
+        list:[
+          {
+            parent:1,
+            parentName:"",
+            chird:[
+              {
+              id:'',
+              name:'',
+              }
+            ]
+          }
+        ],
         loginForm: {
           username: '',
           password: '',
@@ -110,7 +122,7 @@ import login_center_bg from '@/assets/bg2.jpeg'
               this.loading = false;
               setCookie("username",this.loginForm.username,15);
               setCookie("password",this.loginForm.password,15);
-              this.$router.push({path: '/'})
+              this.$router.push({path: '/hospital'})
             }).catch(() => {
               this.loading = false
             })
