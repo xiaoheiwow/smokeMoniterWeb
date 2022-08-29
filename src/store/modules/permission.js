@@ -9,9 +9,6 @@
 //       if (currMenu.title != null && currMenu.title !== '') {
 //         route.meta.title = currMenu.title;
 //       }
-//       if (currMenu.icon != null && currMenu.title !== '') {
-//         route.meta.icon = currMenu.icon;
-//       }
 //       if(currMenu.hidden!=null){
 //         route.hidden = currMenu.hidden !== 0;
 //       }

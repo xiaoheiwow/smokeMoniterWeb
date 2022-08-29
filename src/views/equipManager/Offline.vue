@@ -59,6 +59,7 @@
 
     <div class="table-container">
       <el-table
+        id="table"
         :data="list"
         tooltip-effect="dark"
         v-loading="listLoading"

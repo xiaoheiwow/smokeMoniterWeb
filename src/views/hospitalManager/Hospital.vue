@@ -45,7 +45,7 @@
           label-width="140px"
           style="float: right;height:80px"
         >
-          <el-button type="warning" size="medium" plain>
+          <el-button type="warning" size="medium" plain @click="this.$utils.exportExcel">
             <i class="el-icon-document-add"></i>导出数据
           </el-button>
 
@@ -74,6 +74,7 @@
 
     <div class="table-container">
       <el-table
+        id="table"
         :data="list"
         tooltip-effect="dark"
         style="width: 100%"

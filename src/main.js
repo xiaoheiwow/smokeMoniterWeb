@@ -9,12 +9,12 @@ import store from './store/index.js'
 import 'xe-utils'
 import VXETable from 'vxe-table'
 import 'vxe-table/lib/style.css'
-
 import * as echarts from 'echarts';
 import dataV from '@jiaminghi/data-view'
+import * as utils from '@/utils/utils.js'
+Vue.prototype.$utils = utils
 Vue.use(dataV)
 Vue.prototype.$echarts = echarts
-
 Vue.use(VXETable)
 Vue.use(ElementUI)
 Vue.config.productionTip = false
