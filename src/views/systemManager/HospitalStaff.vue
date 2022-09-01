@@ -185,7 +185,7 @@
               </el-form-item>
             </el-form>
             <div slot="footer" class="dialog-footer">
-              <el-button @click="dialogFormVisible = false">取 消</el-button>
+              <el-button @click="dialogFormVisible = false;realName = '';">取 消</el-button>
               <el-button
                 type="primary"
                 @click="
@@ -381,6 +381,7 @@ export default {
           });
           this.getList();
        })
+       this.realName = '';
     },
     goDialog(row){
       this.id=row.id;

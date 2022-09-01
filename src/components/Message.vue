@@ -60,12 +60,6 @@ export default {
   created() {
     this.handleRecord();
   },
-  // mounted() {
-  //   this.nowTimes();
-  // },
-  // beforeDestroy() {
-  //   this.clear();
-  // },
   methods: {
     handleRecord() {
       let id = this.$store.state.user.userId;
@@ -83,7 +77,6 @@ export default {
     goDetail(item){
       let id = item.orderId;
       queryOrderById(id).then(response =>{
-      console.log(response.data)
       this.$router.push({
         name: "orderDetail",
         path: "/orderHandler/orderDetail",

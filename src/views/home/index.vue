@@ -8,7 +8,7 @@
                     <dv-decoration-1 class="dv-decoration-1" style="width:300px;height:80px;" />
                     <dv-decoration-2 class="dv-decoration-2" :reverse="true" style="width:3px;height:680px;" />
                     <dv-decoration-2 class="dv-decoration-2-reverse" :reverse="true" style="width:5px;height:680px;" />
-                    <dv-decoration-5 class="dv-decoration-5" dur="6" style="width:300px;height:40px;" />"
+                    <dv-decoration-5 class="dv-decoration-5" :dur="6" style="width:300px;height:40px;" />"
                     <dv-decoration-6 class="dv-decoration-6" style="width:300px;height:30px;" />
                     <dv-decoration-9 class="dv-decoration-9 " style="width:200px;height:200px;">
                         50%
@@ -44,7 +44,7 @@
 <script>
 import Charts from '@jiaminghi/charts'
 export default {
-    name: 'main',
+    name: 'home',
     data() {
         return {
             loading: true,

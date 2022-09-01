@@ -37,7 +37,7 @@
             <el-card class="box-card">
               <span class="box-topSpan">报警处理时间(分钟)</span>
               <br />
-              <span class="box-bottomSpan">10000</span>
+              <span class="box-bottomSpan">1000</span>
               <br />
               <br />
               <span style="float:left"
@@ -154,7 +154,6 @@ export default {
     goDetail(item) {
       let id = item.orderId;
       queryOrderById(id).then(response => {
-        console.log(response.data);
         this.$router.push({
           name: "orderDetail",
           path: "/orderHandler/orderDetail",

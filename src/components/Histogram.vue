@@ -14,7 +14,7 @@ export default {
   },
   methods:{
     drawChart() {
-      // 基于准备好的dom，初始化echarts实例  这个和上面的main对应
+      // 基于准备好的dom，初始化echarts实例  
       let myChart = this.$echarts.init(document.getElementById("main"));
       // 指定图表的配置项和数据
       let option = {

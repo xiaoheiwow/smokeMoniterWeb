@@ -61,13 +61,6 @@ const defaultDetail = {
   id: ""
 };
 export default {
-  //   name: "Detail",
-  //   props: {
-  //     isEdit: {
-  //       type: Boolean,
-  //       default: false
-  //     }
-  //   },
   data() {
     return {
       detail: Object.assign({}, defaultDetail),
